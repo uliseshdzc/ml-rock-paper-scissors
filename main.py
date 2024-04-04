@@ -14,7 +14,7 @@ def play(player_move: str, computer_move: str, score: dict) -> Result:
     elif WINNNING_MOVE[computer_move] == player_move:
         result = Result.WIN
     else:
-        result = Result.LOSE
+        result = Result.LOSS
     
     score[result] += 1
     return result
@@ -44,12 +44,12 @@ def main():
             markov_chain.update(player_move)
 
     except KeyboardInterrupt:
-        rounds_without_ties = score[Result.WIN] + score[Result.LOSE]
+        rounds_without_ties = score[Result.WIN] + score[Result.LOSS]
         p_win_rate = 0 if rounds_without_ties == 0 else score[Result.WIN] / rounds_without_ties * 100
         c_win_rate = 0 if rounds_without_ties == 0 else 100 - p_win_rate
 
-        print('\n\nGame ended. Score: {wins} wins, {ties} ties and {loses} loses'
-              .format(wins = score[Result.WIN], ties = score[Result.TIE], loses = score[Result.LOSE]))
+        print('\n\nGame ended. Score: {wins} wins, {ties} ties and {losses} losses'
+              .format(wins = score[Result.WIN], ties = score[Result.TIE], losses = score[Result.LOSS]))
         print('\nYour win rate: {p_win_rate:.2f}%\nComputer win rate: {c_win_rate:.2f}%'
               .format(p_win_rate = p_win_rate, c_win_rate = c_win_rate))
 

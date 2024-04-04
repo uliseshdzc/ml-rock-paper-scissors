@@ -4,7 +4,7 @@ from enum import Enum
 class Result(Enum):
     WIN = 1
     TIE = 0
-    LOSE = -1
+    LOSS = -1
 
     def __str__(self):
         match self:
@@ -12,5 +12,5 @@ class Result(Enum):
                 return "You win!"
             case Result.TIE:
                 return "It's a tie"
-            case Result.LOSE:
+            case Result.LOSS:
                 return "You lose"            
